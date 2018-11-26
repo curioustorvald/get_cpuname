@@ -56,11 +56,13 @@ public class GetCpuName {
                 while ( (lineRead = br.readLine()) != null) {
                     // filter line "model name    : ........"
                     if (lineRead.startsWith("model name")) {
-                        while (!lineRead.startsWith(":")) {
-                            lineRead = lineRead.substring(1);
+                        int dropCnt = 0;
+                        while (lineRead.charAt(dropCnt) != ':') {
+                            dropCnt += 1;
+                            //lineRead = lineRead.substring(1);
                         } // slowly drop a char from the beginning until we see ':'
 
-                        lineRead = lineRead.substring(2); // drop ': '
+                        lineRead = lineRead.substring(dropCnt + 2); // drop ': '
                         lineFound = true;
                         break;
                     }
@@ -78,11 +80,12 @@ public class GetCpuName {
                 while ( (lineRead = br.readLine()) != null) {
                     // filter line "model name    : ........"
                     if (lineRead.startsWith("machdep.cpu.brand_string")) {
-                        while (!lineRead.startsWith(":")) {
-                            lineRead = lineRead.substring(1);
+                        int dropCnt = 0;
+                        while (lineRead.charAt(dropCnt) != ':') {
+                            dropCnt += 1;
                         } // slowly drop a char from the beginning until we see ':'
 
-                        lineRead = lineRead.substring(2); // drop ': '
+                        lineRead = lineRead.substring(dropCnt + 2); // drop ': '
                         lineFound = true;
                         break;
                     }
@@ -126,11 +129,12 @@ public class GetCpuName {
                 while ( (lineRead = br.readLine()) != null) {
                     // filter line "vendor_id    : ........"
                     if (lineRead.startsWith("vendor_id")) {
-                        while (!lineRead.startsWith(":")) {
+                        int dropCnt = 0;
+                        while (lineRead.charAt(dropCnt) != ':') {
                             lineRead = lineRead.substring(1);
                         } // slowly drop a char from the beginning until we see ':'
 
-                        lineRead = lineRead.substring(2); // drop ': '
+                        lineRead = lineRead.substring(dropCnt + 2); // drop ': '
                         lineFound = true;
                         break;
                     }
@@ -148,11 +152,12 @@ public class GetCpuName {
                 while ( (lineRead = br.readLine()) != null) {
                     // filter line "model name    : ........"
                     if (lineRead.startsWith("machdep.cpu.vendor")) {
-                        while (!lineRead.startsWith(":")) {
+                        int dropCnt = 0;
+                        while (lineRead.charAt(dropCnt) != ':') {
                             lineRead = lineRead.substring(1);
                         } // slowly drop a char from the beginning until we see ':'
 
-                        lineRead = lineRead.substring(2); // drop ': '
+                        lineRead = lineRead.substring(dropCnt + 2); // drop ': '
                         lineFound = true;
                         break;
                     }
