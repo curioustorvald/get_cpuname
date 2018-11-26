@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GetCpuName-src">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="GetCpuName-src.jar">
+      <element id="dir-copy" path="$PROJECT_DIR$/src" />
+    </root>
+  </artifact>
+</component>

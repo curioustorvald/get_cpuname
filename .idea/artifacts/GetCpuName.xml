@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GetCpuName">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="GetCpuName.jar">
+      <element id="module-output" name="get_cpuname" />
+    </root>
+  </artifact>
+</component>
