@@ -50,7 +50,7 @@ public class GetCpuName {
                 br.close();
                 return returnLine;
             case LINUX:
-                br = runCmdAndGetReader("cat /proc/cpuinfo | grep 'model name'");
+                br = runCmdAndGetReader("cat /proc/cpuinfo");
 
                 // actually try to read
                 while ( (lineRead = br.readLine()) != null) {
@@ -72,7 +72,7 @@ public class GetCpuName {
 
                 return lineRead;
             case OSX:
-                br = runCmdAndGetReader("sysctl -a | grep machdep.cpu.brand_string");
+                br = runCmdAndGetReader("sysctl -a");
 
                 // actually try to read
                 while ( (lineRead = br.readLine()) != null) {
@@ -120,7 +120,7 @@ public class GetCpuName {
                 br.close();
                 return returnLine;
             case LINUX:
-                br = runCmdAndGetReader("cat /proc/cpuinfo | grep 'vendor_id'");
+                br = runCmdAndGetReader("cat /proc/cpuinfo");
 
                 // actually try to read
                 while ( (lineRead = br.readLine()) != null) {
@@ -142,7 +142,7 @@ public class GetCpuName {
 
                 return lineRead;
             case OSX:
-                br = runCmdAndGetReader("sysctl -a | grep machdep.cpu.vendor");
+                br = runCmdAndGetReader("sysctl -a");
 
                 // actually try to read
                 while ( (lineRead = br.readLine()) != null) {
