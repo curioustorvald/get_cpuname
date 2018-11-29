@@ -9,6 +9,8 @@ A simple set of commands to get CPU's name (e.g. Intel (R) Core(TM) i7-6700K ...
 ### Dependency
 - Windows: Vista or later to run `wmic`
 
+### Limitations
+- ARM processors: getCPUID() will fail.
 
 ### License
 
