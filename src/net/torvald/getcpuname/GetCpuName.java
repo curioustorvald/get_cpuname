@@ -28,6 +28,24 @@ public class GetCpuName {
         }
     }
 
+    /**
+     * Gets CPU's model name as saved in your operation system.
+     *
+     * This method will first identify the OS and then run a suitable command.
+     *
+     * Commands executed are:
+     *
+     * <ul>
+     *     <li>Windows: <code>wmic cpu get name</code>; Vista or higher is required</li>
+     *     <li>Linux: <code>cat /proc/cpuinfo</code> and try to fetch the <code>model name</code> field (grep is not used as in some environments it just doesn't work, tested on repl.it online IDE)</li>
+     *     <li>Mac: <code>sysctl -a</code> and try to fetch the <code>machdep.cpu.brand_string</code> field</li>
+     * </ul>
+     *
+     * If the OS is neither Windows nor Mac, it will fall back to Linux, which means it won't work on Solaris.
+     *
+     * @return CPU brand name; <code>null</code> on failure
+     * @throws IOException
+     */
     public static String getModelName() throws IOException {
         String lineRead;
         String returnLine = "";
@@ -70,7 +88,7 @@ public class GetCpuName {
 
                 br.close();
 
-                if (!lineFound) throw new InternalError();
+                if (!lineFound) return null;
 
                 return lineRead;
             case OSX:
@@ -93,14 +111,34 @@ public class GetCpuName {
 
                 br.close();
 
-                if (!lineFound) throw new InternalError();
+                if (!lineFound) return null;
 
                 return lineRead;
         }
 
-        return "InternalError";
+        return null;
     }
 
+    /**
+     * Gets CPU's vendor ID (CPUID) as saved in your operation system.
+     *
+     * This method will first identify the OS and then run a suitable command.
+     *
+     * This command will only work on x86/AMD64 processors, as <code>CPUID</code> is x86 instruction. For other processors, <code>null</code> will be returned.
+     *
+     * Commands executed are:
+     *
+     * <ul>
+     *     <li>Windows: <code>wmic cpu get manufacturer</code>; Vista or higher is required</li>
+     *     <li>Linux: <code>cat /proc/cpuinfo</code> and try to fetch the <code>vendor_id</code> field (grep is not used as in some environments it just doesn't work, tested on repl.it online IDE)</li>
+     *     <li>Mac: <code>sysctl -a</code> and try to fetch the <code>machdep.cpu.vendor</code> field</li>
+     * </ul>
+     *
+     * If the OS is neither Windows nor Mac, it will fall back to Linux, which means it won't work on Solaris.
+     *
+     * @return
+     * @throws IOException
+     */
     public static String getCPUID() throws IOException {
         String lineRead;
         String returnLine = "";
@@ -142,7 +180,7 @@ public class GetCpuName {
 
                 br.close();
 
-                if (!lineFound) throw new InternalError();
+                if (!lineFound) return null;
 
                 return lineRead;
             case OSX:
@@ -165,12 +203,12 @@ public class GetCpuName {
 
                 br.close();
 
-                if (!lineFound) throw new InternalError();
+                if (!lineFound) return null;
 
                 return lineRead;
         }
 
-        return "InternalError";
+        return null;
     }
 
     private static BufferedReader runCmdAndGetReader(String cmd) throws IOException {
