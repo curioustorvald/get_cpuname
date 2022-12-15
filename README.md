@@ -10,15 +10,15 @@ A simple set of commands to get CPU's name (e.g. Intel (R) Core(TM) i7-6700K ...
 - Windows: Vista or later to run `wmic`
 
 ### Limitations
-- ARM processors: getCPUID() will fail.
+- ARM processors: `getCPUID()` will not work
 
 ### License
 
-- EM-EYE-TEE mf
+- MIT
 
 ### Examples
 
-My computers:
+x86-64 Processors:
 
 ```
 WINDOWS 10
@@ -27,17 +27,21 @@ WINDOWS 10
 ```
 
 ```
-MAC OS X
->>>Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz<<<
->>>GenuineIntel<<<
-```
-
-From a friend of mine:
-
-```
 WINDOWS 10
 >>>AMD FX(tm)-8300 Eight-Core Processor<<<
 >>>AuthenticAMD<<<
+```
+
+```
+LINUX
+>>>AMD Ryzen 9 7950X 16-Core Processor<<<
+>>>AuthenticAMD<<<
+```
+
+```
+MAC OS X
+>>>Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz<<<
+>>>GenuineIntel<<<
 ```
 
 Raspberry PI:
