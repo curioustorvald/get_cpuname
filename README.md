@@ -44,10 +44,16 @@ MAC OS X
 >>>GenuineIntel<<<
 ```
 
-Raspberry PI:
+ARM Processors:
 
 ```
 LINUX
 >>>ARMv7 Processor rev 4 (v7l)<<<
+>>>null<<<
+```
+
+```
+MAC OS X
+>>>Apple M2<<<
 >>>null<<<
 ```
